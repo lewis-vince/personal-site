@@ -1,6 +1,6 @@
 FROM circleci/node:11.3.0-stretch
 
-RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
+RUN sudo useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
 
 USER docker
 
