@@ -87,6 +87,10 @@ jobs:
             - "venv"
       
       - run:
+          name: LIST DIR
+          command: ls
+      
+      - run:
           name: Load image
           command: |
             docker load --input docker-image/image.tar
