@@ -35,6 +35,9 @@ jobs:
       - run:
           name: Set convenience environment variables
           command: |
+            echo 'export AWS_ACCOUNT_ID=014953256336' >> $BASH_ENV
+            echo 'export AWS_DEFAULT_REGION="eu-west-2"' >> $BASH_ENV
+            echo 'export ECR_REPOSITORY_NAME="personal-site"' >> $BASH_ENV
             echo 'export ECR_REPOSITORY_NAME="${AWS_RESOURCE_NAME_PREFIX}"' >> $BASH_ENV
             echo 'export FULL_IMAGE_NAME="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${ECR_REPOSITORY_NAME}:${CIRCLE_SHA1}"' >> $BASH_ENV
 
