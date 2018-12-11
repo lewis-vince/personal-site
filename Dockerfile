@@ -15,7 +15,7 @@ RUN sudo npm run build
 RUN sudo npm install -g serve
 
 # Serve built site
-RUN sudo serve -s build
+CMD sudo serve -s build
 
 # Tell Docker about the port we'll run on.
 EXPOSE 5000
