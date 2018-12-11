@@ -7,7 +7,7 @@ ENV NPM_CONFIG_LOGLEVEL warn
 COPY . .
 
 # Build for production.
-RUN npm run build
+RUN sudo npm run build
 
 # Tell Docker about the port we'll run on.
 EXPOSE 5000
