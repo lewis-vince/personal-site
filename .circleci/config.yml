@@ -52,7 +52,6 @@ jobs:
           command: |
             mkdir docker-image
             docker save -o docker-image/image.tar $FULL_IMAGE_NAME
-      
       persist_to_workspace:
         root: .
         paths:
