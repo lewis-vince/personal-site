@@ -47,9 +47,9 @@ jobs:
       - run:
           name: Test image
           command: |
-            docker run -d -p 3000:80 --name built-image $FULL_IMAGE_NAME
+            docker run -d -p 3000:3000 --name built-image $FULL_IMAGE_NAME
             sleep 10
-            docker run --network container:built-image appropriate/curl --retry 10 --retry-connrefused http://localhost:80 | grep "Hello World!"
+            docker run --network container:built-image appropriate/curl --retry 10 --retry-connrefused http://localhost:3000 | grep "Hello World!"
       - run:
           name: Save image to an archive
           command: |
