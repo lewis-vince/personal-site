@@ -33,10 +33,10 @@ jobs:
       # run tests!
       - run: yarn test
       - run:
-        name: Set convenience environment variables
-        command: |
-          echo 'export ECR_REPOSITORY_NAME="${AWS_RESOURCE_NAME_PREFIX}"' >> $BASH_ENV
-          echo 'export FULL_IMAGE_NAME="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${ECR_REPOSITORY_NAME}:${CIRCLE_SHA1}"' >> $BASH_ENV
+          name: Set convenience environment variables
+          command: |
+            echo 'export ECR_REPOSITORY_NAME="${AWS_RESOURCE_NAME_PREFIX}"' >> $BASH_ENV
+            echo 'export FULL_IMAGE_NAME="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${ECR_REPOSITORY_NAME}:${CIRCLE_SHA1}"' >> $BASH_ENV
 
       - run:
           name: Build image
@@ -52,10 +52,10 @@ jobs:
           command: |
             mkdir docker-image
             docker save -o docker-image/image.tar $FULL_IMAGE_NAME
-      - persist_to_workspace:
-        root: .
-        paths:
-          - docker-image
+    persist_to_workspace:
+      root: .
+      paths:
+        - docker-image
 
   deploy:
     docker:
