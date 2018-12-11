@@ -18,4 +18,4 @@ RUN sudo npm install -g serve
 CMD sudo serve -s build
 
 # Tell Docker about the port we'll run on.
-EXPOSE 3000
+EXPOSE 5000
