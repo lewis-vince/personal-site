@@ -3,6 +3,7 @@ FROM circleci/node:11.3.0-stretch
 RUN sudo groupadd docker
 
 # RUN sudo gpasswd --add $USER docker 
+RUN whoami
 RUN sudo usermod -G docker -a $USER
 
 # The base node image sets a very verbose log level.
