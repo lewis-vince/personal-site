@@ -88,12 +88,12 @@ jobs:
       
       - run:
           name: LIST DIR
-          command: ls
+          command: ls workspace/docker-image
       
       - run:
           name: Load image
           command: |
-            docker load --input docker-image/image.tar
+            docker load --input workspace/docker-image/image.tar
       - run:
           name: Setup common environment variables
           command: |
