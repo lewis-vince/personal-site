@@ -2,7 +2,8 @@ FROM circleci/node:11.3.0-stretch
 
 RUN sudo groupadd docker
 
-RUN sudo gpasswd -a docker $USER 
+# RUN sudo gpasswd -a docker $USER 
+RUN usermod -aG docker $USER
 
 # The base node image sets a very verbose log level.
 ENV NPM_CONFIG_LOGLEVEL warn
