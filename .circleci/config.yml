@@ -87,8 +87,8 @@ jobs:
             - "venv"
       
       - run:
-          name: LIST DIR
-          command: ls workspace/docker-image
+          name: Test AWS Env. Vars.
+          command: echo ${AWS_DEFAULT_REGION}
       
       - run:
           name: Load image
