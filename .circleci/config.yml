@@ -97,6 +97,9 @@ jobs:
       - run:
           name: Setup common environment variables
           command: |
+            echo 'export AWS_ACCOUNT_ID=014953256336' >> $BASH_ENV
+            echo 'export AWS_DEFAULT_REGION="eu-west-2"' >> $BASH_ENV
+            echo 'export AWS_RESOURCE_NAME_PREFIX="personal-site"' >> $BASH_ENV
             echo 'export ECR_REPOSITORY_NAME="${AWS_RESOURCE_NAME_PREFIX}"' >> $BASH_ENV
             echo 'export ECS_CLUSTER_NAME="${AWS_RESOURCE_NAME_PREFIX}-cluster"' >> $BASH_ENV
             echo 'export ECS_SERVICE_NAME="${AWS_RESOURCE_NAME_PREFIX}-service"' >> $BASH_ENV
