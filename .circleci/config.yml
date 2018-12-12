@@ -57,45 +57,45 @@ jobs:
           paths:
             - docker-image
 
-  # deploy:
-  #   docker:
-  #     - image: circleci/python:3.6.1
-  #   environment:
-  #     AWS_DEFAULT_OUTPUT: json
-  #   steps:
-  #     - checkout
-  #     - setup_remote_docker
-  #     - attach_workspace:
-  #         at: workspace
-  #     - restore_cache:
-  #         key: v1-{{ checksum "requirements.txt" }}
-  #     - run:
-  #         name: Install the AWS CLI
-  #         command: |
-  #           python3 -m venv venv
-  #           . venv/bin/activate
-  #           pip install -r requirements.txt
+  deploy:
+    docker:
+      - image: circleci/python:3.6.1
+    environment:
+      AWS_DEFAULT_OUTPUT: json
+    steps:
+      - checkout
+      - setup_remote_docker
+      - attach_workspace:
+          at: workspace
+      - restore_cache:
+          key: v1-{{ checksum "requirements.txt" }}
+      - run:
+          name: Install the AWS CLI
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install -r requirements.txt
       
-  #     - save_cache:
-  #         key: v1-{{ checksum "requirements.txt" }}
-  #         paths:
-  #           - "venv"
-  #     - run:
-  #         name: Load image
-  #         command: |
-  #           docker load --input workspace/docker-image/image.tar
-  #     - run:
-  #         name: Setup common environment variables
-  #         command: |
-  #           echo 'export ECR_REPOSITORY_NAME="${AWS_RESOURCE_NAME_PREFIX}"' >> $BASH_ENV
-  #           echo 'export ECS_CLUSTER_NAME="${AWS_RESOURCE_NAME_PREFIX}-cluster"' >> $BASH_ENV
-  #           echo 'export ECS_SERVICE_NAME="${AWS_RESOURCE_NAME_PREFIX}-service"' >> $BASH_ENV
-  #     - run:
-  #         name: Push image to ECR
-  #         command: |
-  #           . venv/bin/activate
-  #           eval $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
-  #           docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPOSITORY_NAME:$CIRCLE_SHA1
+      - save_cache:
+          key: v1-{{ checksum "requirements.txt" }}
+          paths:
+            - "venv"
+      - run:
+          name: Load image
+          command: |
+            docker load --input workspace/docker-image/image.tar
+      - run:
+          name: Setup common environment variables
+          command: |
+            echo 'export ECR_REPOSITORY_NAME="${AWS_RESOURCE_NAME_PREFIX}"' >> $BASH_ENV
+            echo 'export ECS_CLUSTER_NAME="${AWS_RESOURCE_NAME_PREFIX}-cluster"' >> $BASH_ENV
+            echo 'export ECS_SERVICE_NAME="${AWS_RESOURCE_NAME_PREFIX}-service"' >> $BASH_ENV
+      - run:
+          name: Push image to ECR
+          command: |
+            . venv/bin/activate
+            eval $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
+            docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPOSITORY_NAME:$CIRCLE_SHA1
   #     - run:
   #         name: Deploy
   #         command: |
@@ -118,9 +118,9 @@ workflows:
   build-deploy:
     jobs:
       - build
-      # - deploy:
-      #     requires:
-      #       - build
-      #     filters:
-      #       branches:
-      #         only: master
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
