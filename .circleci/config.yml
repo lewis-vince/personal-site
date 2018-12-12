@@ -83,11 +83,6 @@ jobs:
           key: v1-{{ checksum "requirements.txt" }}
           paths:
             - "venv"
-      
-      - run:
-          name: Test AWS Env. Vars.
-          command: aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email
-      
       - run:
           name: Load image
           command: |
@@ -101,7 +96,9 @@ jobs:
             echo 'export ECR_REPOSITORY_NAME="${AWS_RESOURCE_NAME_PREFIX}"' >> $BASH_ENV
             echo 'export ECS_CLUSTER_NAME="${AWS_RESOURCE_NAME_PREFIX}-cluster"' >> $BASH_ENV
             echo 'export ECS_SERVICE_NAME="${AWS_RESOURCE_NAME_PREFIX}-service"' >> $BASH_ENV
-      
+      - run:
+          name: Test AWS Env. Vars.
+          command: aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email
       - run:
           name: Push image to ECR
           command: |
