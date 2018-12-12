@@ -70,10 +70,8 @@ jobs:
       - setup_remote_docker
       - attach_workspace:
           at: workspace
-      
       - restore_cache:
           key: v1-{{ checksum "requirements.txt" }}
-
       - run:
           name: Install the AWS CLI
           command: |
@@ -88,7 +86,7 @@ jobs:
       
       - run:
           name: Test AWS Env. Vars.
-          command: echo ${AWS_DEFAULT_REGION}
+          command: aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email
       
       - run:
           name: Load image
