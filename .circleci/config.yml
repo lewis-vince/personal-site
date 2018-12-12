@@ -98,7 +98,9 @@ jobs:
             echo 'export ECS_SERVICE_NAME="${AWS_RESOURCE_NAME_PREFIX}-service"' >> $BASH_ENV
       - run:
           name: Test AWS Env. Vars.
-          command: aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email
+          command:  |
+            . venv/bin/activate
+            aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email
       - run:
           name: Push image to ECR
           command: |
