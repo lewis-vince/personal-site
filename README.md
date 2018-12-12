@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/lewis-vince/personal-site/tree/master.svg?style=svg)](https://circleci.com/gh/lewis-vince/personal-site/tree/master)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
