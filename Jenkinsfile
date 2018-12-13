@@ -15,13 +15,16 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'npm run build'
+                step('Install dependencies') {
+                    sh 'npm install'
+                }
+                step('Build application') {
+                    sh 'npm run build'
+                }
             }
         }
         stage('Test') {
-            steps {
-                sh 'npm test'
-            }
+            sh 'npm test'
         }
         // stage('Publish docker image') {
             
