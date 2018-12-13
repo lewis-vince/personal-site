@@ -1,4 +1,4 @@
-[![Build Status](http://jenkins.lewisvince.co.uk/job/personal-site/badge/icon)](http://jenkins.lewisvince.co.uk/job/personal-site/)
+[![Build Status](http://jenkins.lewisvince.co.uk/buildStatus/icon?job=personal-site)](http://jenkins.lewisvince.co.uk/job/personal-site/)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
