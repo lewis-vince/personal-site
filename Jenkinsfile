@@ -15,12 +15,12 @@ pipeline {
         }
         stage('Build') {
             steps {
-                npm run build
+                sh 'npm run build'
             }
         }
         stage('Test') {
             steps {
-                npm test
+                sh 'npm test'
             }
         }
         // stage('Publish docker image') {
