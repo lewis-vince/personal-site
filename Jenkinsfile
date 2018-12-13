@@ -1,7 +1,12 @@
+#!groovy
+
 pipeline {
+    agent: any
     stages{
         stage('Clone from GitHub') {
-            git 'https://github.com/lewis-vince/personal-site.git'
+            steps {
+                git 'https://github.com/lewis-vince/personal-site.git'
+            }
         }
         stage('Build') {
             steps {
