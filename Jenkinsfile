@@ -9,16 +9,24 @@ pipeline {
     
     stages{
         stage('Clone from GitHub') {
-            git 'https://github.com/lewis-vince/personal-site.git'
+            steps {
+                git 'https://github.com/lewis-vince/personal-site.git'
+            }
         }
         stage('Install dependencies') {
-            sh 'npm install'
+            steps {
+                sh 'npm install'
+            }
         }
-        step('Build application') {
-            sh 'npm run build'
+        stage('Build application') {
+            steps {
+                sh 'npm run build'
+            }
         }
         stage('Run tests') {
-            sh 'npm test'
+            steps {
+                sh 'npm test'
+            }
         }
         // stage('Publish docker image') {
             
