@@ -5,9 +5,9 @@ pipeline {
         docker {
             image 'node:latest'
         }
-        environment {
-            HOME = '.'
-        }
+    }
+    environment {
+        HOME = '.'
     }
     
     stages{
