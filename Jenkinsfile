@@ -15,14 +15,15 @@ pipeline {
                 sh 'npm run build'
             }
         }
-        stage('Run tests') {
-            steps {
-                sh 'npm test'
-            }
-        }
-        // stage('Publish docker image') {
-            
+        // stage('Run tests') {
+        //     steps {
+        //         sh 'npm test'
+        //         sh 'a'
+        //     }
         // }
+        stage('Publish docker image') {
+            
+        }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
