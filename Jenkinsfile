@@ -23,9 +23,9 @@ pipeline {
                 npm test
             }
         }
-        stage('Publish docker image') {
+        // stage('Publish docker image') {
             
-        }
+        // }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
