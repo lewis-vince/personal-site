@@ -10,17 +10,17 @@ pipeline {
     stages{
         stage('Install dependencies') {
             steps {
-                sh 'sudo npm install'
+                sh 'npm install'
             }
         }
         stage('Build application') {
             steps {
-                sh 'sudo npm run build'
+                sh 'npm run build'
             }
         }
         stage('Run tests') {
             steps {
-                sh 'sudo npm test'
+                sh 'npm test'
             }
         }
         // stage('Publish docker image') {
