@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/lewis-vince/personal-site/tree/master.svg?style=svg)](https://circleci.com/gh/lewis-vince/personal-site/tree/master)
+[![Build Status](http://jenkins.lewisvince.co.uk/job/personal-site/badge/icon)](http://jenkins.lewisvince.co.uk/job/personal-site/)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

@@ -3,7 +3,7 @@
 pipeline {
     agent {
         docker {
-            image 'node:6.3'
+            image 'node:latest'
         }
     }
     
@@ -15,13 +15,16 @@ pipeline {
         }
         stage('Build') {
             steps {
-                echo 'Building..'
+                npm run build
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                npm test
             }
+        }
+        stage('Publish docker image') {
+            
         }
         stage('Deploy') {
             steps {
