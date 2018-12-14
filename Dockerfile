@@ -5,19 +5,16 @@ FROM node:11.3.0-stretch
 # The base node image sets a very verbose log level.
 ENV NPM_CONFIG_LOGLEVEL warn
 
-# Create work directory
-WORKDIR /usr/src/app
+RUN mkdir -p /usr/local/app
 
-# Copy package.json and package-lock.json into the image.
-COPY package*.json ./
+# Create work directory
+WORKDIR /usr/local/app
 
 # Copy app source
 COPY . .
 
 # Build for production.
 RUN npm run build
-
-
 
 # Install static hosting server
 RUN npm install -g serve
