@@ -14,10 +14,10 @@ WORKDIR /usr/local/app
 COPY . /usr/local/app
 
 # Install dependencies
-RUN npm i
+RUN npm i --production
 
 # Build for production.
-RUN npm run build --production
+RUN npm run build
 
 # Install static hosting server
 RUN npm install -g serve webpack
