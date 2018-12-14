@@ -17,10 +17,10 @@ COPY . /usr/local/app
 RUN npm i
 
 # Build for production.
-RUN npm run build
+RUN npm run build --production
 
 # Install static hosting server
-RUN npm install -g serve
+RUN npm install -g serve webpack
 
 # Tell Docker about the port we'll run on.
 EXPOSE 8080
