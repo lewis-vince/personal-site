@@ -11,11 +11,13 @@ WORKDIR /usr/src/app
 # Copy package.json and package-lock.json into the image.
 COPY package*.json ./
 
+# Copy app source
+COPY . .
+
 # Build for production.
 RUN npm run build
 
-# Copy app source
-COPY . .
+
 
 # Install static hosting server
 RUN npm install -g serve
