@@ -13,8 +13,8 @@ WORKDIR /usr/local/app
 # Copy app source
 COPY . /usr/local/app
 
-# # Install dependencies
-# RUN npm i
+# Install dependencies
+RUN npm i
 
 # Build for production.
 RUN npm run build
