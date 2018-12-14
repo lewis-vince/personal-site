@@ -10,6 +10,9 @@ RUN mkdir -p /usr/local/app
 # Create work directory
 WORKDIR /usr/local/app
 
+# Install dependencies
+RUN npm i
+
 # Copy app source
 COPY . .
 
