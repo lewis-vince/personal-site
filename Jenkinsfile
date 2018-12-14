@@ -21,7 +21,7 @@ pipeline {
         //         sh 'a'
         //     }
         // }
-        stage('Publish docker image') {
+        stage('Deploy') {
             steps {
                 echo 'Building image...'
                 sh 'docker build -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO:$GIT_COMMIT .'
@@ -37,11 +37,6 @@ pipeline {
                     ParameterKey=MaxSize,UsePreviousValue=true \
                     ParameterKey=SubnetIDs,UsePreviousValue=true \
                     ParameterKey=VpcId,UsePreviousValue=true'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
             }
         }
     }
