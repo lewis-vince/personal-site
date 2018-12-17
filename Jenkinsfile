@@ -23,6 +23,8 @@ pipeline {
         // }
         stage('Deploy') {
             steps {
+                echo 'Logging in to AWS...'
+                sh '$(aws ecr get-login --no-include-email --region eu-west-2)'
                 echo 'Building image...'
                 sh 'docker build -t personal-site .'
                 echo 'Tagging image...'
