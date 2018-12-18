@@ -31,7 +31,7 @@ pipeline {
                 sh 'docker tag personal-site:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$PERSONAL_SITE_IMAGE_REPO:latest'
                 echo 'Pushing image...'
                 sh 'docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$PERSONAL_SITE_IMAGE_REPO:latest'
-                echo 'Updating CloudFormation template...'
+                echo 'Triggering ECS redeployment...'
                 sh 'aws ecs update-service --cluster $AWS_ECS_CLUSTER_NAME --service $AWS_ECS_SERVICE_NAME --force-new-deployment'
             }
         }
